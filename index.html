@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0,user-scalable=yes,maximum-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="./css/global.min.css" />
+  <link rel="stylesheet" type="text/css" href="./css/indexCodeMirror.min.css" />
+</head>
+
+<body class="load-indicator" data-siteid="2">
+
+  <div class="container" style="margin-top: 50px">
+    <!--文本输入 start-->
+    <div class="yamleditor-box">
+      <div class="editor-box2" id="yamlEditor">
+
+        <div id="editor">
+          <textarea id="code" placeholder="请输入YAML"></textarea>
+          <div id="resize">
+            <i class="icon-bars"></i>
+          </div>
+        </div>
+      </div>
+      <div class="editor-box2">
+
+        <div id="editor2">
+          <textarea id="code2"></textarea>
+          <div id="resize2">
+            <i class="icon-bars"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--文本输入 start-->
+
+    <!--校验结果提示 start-->
+    <div class="with-icon alert t-big-margin" id="jsonlintBox">
+      <i class="icon-info-sign" id="jsonlintIcon"></i>
+      <pre class="content" id="jsonlintResult">请输入需要校验的YAML</pre>
+    </div>
+    <!--校验结果提示 end-->
+
+
+  </div>
+
+  <!--保留 start-->
+  <script src="./js/global.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/indexCodeMirror.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/json2yaml.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    //根据DOM元素的id构造出一个编辑器================================================================================================================================================================================================
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true, //是否显示左边换行术字
+      lineWrapping: true, //是否折叠
+      foldGutter: true,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+    });
+    var editor2 = CodeMirror.fromTextArea(document.getElementById("code2"), {
+      lineNumbers: true, //是否显示左边换行术字
+      lineWrapping: true, //是否折叠
+      foldGutter: true,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+    });
+
+    // // 初始化编辑器内容
+    // var yamlCon = '---\n' +
+    //   'json:\n' +
+    //   '- rigid\n' +
+    //   '- better for data interchange\n' +
+    //   'yaml:\n' +
+    //   '- slim and flexible\n' +
+    //   '- better for configuration\n' +
+    //   'object:\n' +
+    //   '  key: value\n' +
+    //   '  array:\n' +
+    //   '  - null_value: \n' +
+    //   '  - boolean: true\n' +
+    //   '  - integer: 1\n' +
+    //   'paragraph: |\n' +
+    //   '  Blank lines denote\n' +
+    //   '  paragraph breaks\n' +
+    //   'content: |-\n' +
+    //   '  Or we\n' +
+    //   '  can auto\n' +
+    //   '  convert line breaks\n' +
+    //   '  to save space';
+    // editor.setValue(yamlCon);
+    // if (yamlCon) {
+    //   try {
+    //     var json = JSON.stringify(jsyaml.load(yamlCon), null, 2);
+    //     editor2.setValue(json);
+    //     $('#jsonlintResult').html("正确的yaml!");
+    //     $('#jsonlintBox').addClass('alert-success alert').removeClass('alert-warning alert-danger');
+    //     $('#jsonlintIcon').addClass('icon-ok-sign').removeClass('icon-info-sign icon-remove-sign');
+    //   } catch (e) {
+    //     document.getElementById("jsonlintResult").innerHTML = e;
+    //     $('#jsonlintBox').addClass('alert-danger alert').removeClass('alert-warning alert-success');
+    //     $('#jsonlintIcon').addClass('icon-remove-sign').removeClass('icon-info-sign icon-ok-sign');
+    //   }
+    // } else {
+    //   document.getElementById("jsonlintResult").innerHTML = 'yaml代码不能为空';
+    //   $('#jsonlintBox').addClass('alert-danger alert').removeClass('alert-warning alert-success');
+    //   $('#jsonlintIcon').addClass('icon-remove-sign').removeClass('icon-info-sign icon-ok-sign');
+    // }
+
+
+  </script>
+  <!--保留 end-->
+</body>
+
+</html>
